@@ -1,0 +1,87 @@
+{
+  "Hawea": {
+    "ID":"T14",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Kahahakuri": {
+    "ID":"T3",
+    "StockEx,":"Yes",
+    "Priority":"Yes"
+  },
+  "Maharakeke": {
+    "ID":"T8",
+    "StockEx,":"Yes",
+    "Priority":"No"
+  },
+  "Makara": {
+    "ID":"T13",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Makeretu": {
+    "ID":"T6",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Mangaonuku": {
+    "ID":"T2",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Mangarara": {
+    "ID":"T12",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Mangatarata": {
+    "ID":"T9",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Mangamahaki": {
+    "ID":"T10",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Papanui": {
+    "ID":"T11",
+    "StockEx,":"Yes",
+    "Priority":"Yes"
+  },
+  "Porangahau": {
+    "ID":"T7",
+    "StockEx,":"Yes",
+    "Priority":"Yes"
+  },
+  "Lower Tukituki Corridor": {
+    "ID":"T16",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Upper Tukituki": {
+    "ID":"T4",
+    "StockEx,":"Yes",
+    "Priority":"No"
+  },
+  "Waipawa": {
+    "ID":"T1",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Tukipo": {
+    "ID":"T5",
+    "StockEx,":"Yes",
+    "Priority":"No"
+  },
+  "Upper Tukituki Corridor": {
+    "ID":"T15",
+    "StockEx,":"No",
+    "Priority":"No"
+  },
+  "Makaroro": {
+    "ID":"T17",
+    "StockEx,":"No",
+    "Priority":"No"
+  }
+}

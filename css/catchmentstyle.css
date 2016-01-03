@@ -1,0 +1,30 @@
+body { margin:0; padding:0; }
+
+html, body, #map {height: 100%;}
+
+#map { position: absolute; top:0; bottom:0; right:0; left:0; }
+
+.leaflet-sidebar {
+	font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+
+.info {
+	width: 98%;
+    height: 45%;
+    padding: 2px 2px;
+    z-index: -1;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: #E6E6FA;
+    overflow: auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
