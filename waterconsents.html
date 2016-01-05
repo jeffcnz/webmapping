@@ -38,6 +38,7 @@
 </head>
 
 <body>
+	
     <div id="map" class="map" ></div>
     <div id="info"></div>
     
@@ -159,8 +160,7 @@
 	//helper function that checks how many records there are and if there are more than one displays buttons andinformation to aid navigation.
 	function checkButtons(){
 		var outstr = ''
-		if (featureInfo.length > 1){outstr = '<button type = "button" name ="backButton" onclick = "backOne()">< previous</button>  <button type = "button" id ="nextButton" onclick = "forwardOne()">next ></button>'+
-			'<p> Record ' + (i+1) + ' of ' + featureInfo.length + '</p>'};
+		if (featureInfo.length > 1){outstr = '<button type = "button" name ="backButton" onclick = "backOne()"><b><</b></button>    Record ' + (i+1) + ' of ' + featureInfo.length + '   <button type = "button" id ="nextButton" onclick = "forwardOne()"><b>></b></button>'};
 		return outstr;
 		}
 	
@@ -171,12 +171,18 @@
 			'<tr><td><b>Consent: </td><td>' + props.ConsentNumber + '</td></b></tr>'+
 			'<tr><td>Bore: </td><td>' + checkDefined(props.WellNumber) + '</td></tr>'+
 			'<tr><td>Water Use: </td><td>' + props.UseDetail +'</td></tr>'+
+			'<tr><td> </td><td>' + '</td></tr>'+
+			'<tr><td>Recording frequency </td><td>' +'</td></tr>'+
+			'<tr><td>Return method </td><td>' +'</td></tr>'+
+			'<tr><td>Return frequency </td><td>' +'</td></tr>'+
+			'<tr><td> </td><td>' + '</td></tr>'+
 			'<tr><td>Max. weekly volume </td><td>' + '</td><td> m<sup>3</sup>/week</td></tr>'+
 			'<tr><td>Max. 28 day volume </td><td>' + '</td><td> m<sup>3</sup>/28 days</td></tr>'+
 			'<tr><td>Max. monthly volume</td><td>' + '</td><td> m<sup>3</sup>/month</td></tr>'+
 			'<tr><td>Max. annual volume </td><td>' + '</td><td> m<sup>3</sup>/year</td></tr>'+
 			'<tr><td>Max. consented take rate </td><td>' + '</td><td> l/s </td></tr>'+
 			'<tr><td>Max. take point take rate </td><td>' + '</td><td> l/s </td></tr>'+
+			'<tr><td> </td><td>' + '</td></tr>'+
 			'<tr><td><h4>Water Meter Details</h4></td><td></tr>' + 
 			'<tr><td>Meter required? </td><td>' + props.WaterMeterRequired + '</td></tr>'+
 			'<tr><td>Meter required by </td><td>' + checkDefined(props.DateWaterMeterRequired) +'</td></tr>'+

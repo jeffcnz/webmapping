@@ -102,7 +102,7 @@
 		//console.log(props);
 		if (typeof extrastr === 'undefined') extrastr = ''; //checks if a second variable has been passed
 		if (typeof props !== 'object'){ //Checks if props is an object, if not then triggers a not in Tukituki message.
-			info.setContent(locationInfo(extrastr) + ' does not appear to be in the Tukituki Catchment');
+			info.setContent('<br /><br />' + locationInfo(extrastr) + ' does not appear to be in the Tukituki Catchment');
 			info.show();
 			} 
 			else
@@ -118,12 +118,12 @@
 			}; 
 		//console.log(extra);
 		info.setContent('<h4>Tukituki Information</h4>' +  
-			locationInfo(extrastr) + ' is in the <br />'+
+			locationInfo(extrastr) + ' is in the '+
 			props.Name + ' Sub-Catchment <br />'+
 			'<table>' +
-			'<tr><td><b>Sub-Catchment Information: </td><td>' + 
-			'<tr><td><b>Phosphorous Prority Area: </td><td>' + extra.Priority + '</td></b></tr>'+
-			'<tr><td><b>Full Stock Exclusion Required: </td><td>' + extra.StockEx + '</td></b></tr>'+
+			'<tr><td><b>Sub-Catchment Information: </b></td></tr>' + 
+			'<tr><td>Phosphorous Prority Area: </td><td>' + extra.Priority + '</td></tr>'+
+			'<tr><td>Full Stock Exclusion Required: </td><td>' + extra.StockEx + '</td></tr>'+
 			'</table>'
 			); 
 			info.show();
