@@ -58,14 +58,16 @@
 		
 		
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
-		var hbconsents = L.esri.featureLayer({url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
+		var hbconsents = L.esri.featureLayer({
+			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/',
+			//url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
 			pointToLayer: function (geojson, latlng) {return L.circleMarker(latlng, 
 				{radius: 10,
 				stroke: false,
 				fillColor: '#43a2ca',
 				fillOpacity: 0.8}
 				);},
-			where: currentQuery,
+			//where: currentQuery,
 			onEachFeature: onEachFeature //the function to call when a feature is interacted with
 			}).addTo(map);
 
@@ -168,35 +170,35 @@
 	info.update = function (props) {
 		info.setContent(checkButtons() +
 			'<table><tr><td><h4>Consent Details</h4></td></tr>' +  
-			'<tr><td><b>Consent: </td><td>' + props.ConsentNumber + '</td></b></tr>'+
-			'<tr><td>Bore: </td><td>' + checkDefined(props.WellNumber) + '</td></tr>'+
-			'<tr><td>Water Use: </td><td>' + props.UseDetail +'</td></tr>'+
+			'<tr><td><b>Consent: </td><td class="value">' + props.ConsentNumber + '</td></b></tr>'+
+			'<tr><td>Bore: </td><td class="value">' + checkDefined(props.WellNumber) + '</td></tr>'+
+			'<tr><td>Water Use: </td><td class="value">' + props.UseDetail +'</td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
-			'<tr><td>Recording frequency </td><td>' +'</td></tr>'+
-			'<tr><td>Return method </td><td>' +'</td></tr>'+
-			'<tr><td>Return frequency </td><td>' +'</td></tr>'+
+			'<tr><td>Recording frequency </td><td class="value">' + checkDefined(props.WMDRecordingFrequency) +'</td></tr>'+
+			'<tr><td>Return method </td><td class="value">' + checkDefined(props.WaterUseReturnMethod) +'</td></tr>'+
+			'<tr><td>Return frequency </td><td class="value">' + checkDefined(props.WaterUseReturnFrequency) +'</td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
-			'<tr><td>Max. weekly volume </td><td>' + '</td><td> m<sup>3</sup>/week</td></tr>'+
-			'<tr><td>Max. 28 day volume </td><td>' + '</td><td> m<sup>3</sup>/28 days</td></tr>'+
-			'<tr><td>Max. monthly volume</td><td>' + '</td><td> m<sup>3</sup>/month</td></tr>'+
-			'<tr><td>Max. annual volume </td><td>' + '</td><td> m<sup>3</sup>/year</td></tr>'+
-			'<tr><td>Max. consented take rate </td><td>' + '</td><td> l/s </td></tr>'+
-			'<tr><td>Max. take point take rate </td><td>' + '</td><td> l/s </td></tr>'+
+			'<tr><td>Max. weekly volume </td><td class="value">' + checkDefined(props.ConsentMaxWeeklyTake) +'</td><td> m<sup>3</sup>/week</td></tr>'+
+			'<tr><td>Max. 28 day volume </td><td class="value">' + checkDefined(props.ConsentMax28DayTake) +'</td><td> m<sup>3</sup>/28 days</td></tr>'+
+			'<tr><td>Max. monthly volume</td><td class="value">' + checkDefined(props.ConsentMaxMonthlyTake) +'</td><td> m<sup>3</sup>/month</td></tr>'+
+			'<tr><td>Max. annual volume </td><td class="value">' + checkDefined(props.ConsentMaxAnnualTake) +'</td><td> m<sup>3</sup>/year</td></tr>'+
+			'<tr><td>Max. consented take rate </td><td class="value">' + checkDefined(props.ConsentMaxTakeRate) +'</td><td> l/s </td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
 			'<tr><td><h4>Water Meter Details</h4></td><td></tr>' + 
-			'<tr><td>Meter required? </td><td>' + props.WaterMeterRequired + '</td></tr>'+
-			'<tr><td>Meter required by </td><td>' + checkDefined(props.DateWaterMeterRequired) +'</td></tr>'+
-			'<tr><td>Meter installed? </td><td>' + props.WaterMeterInstalled +'</td></tr>'+
-			'<tr><td>Meter installed on  </td><td>' + '</td></tr>'+
+			'<tr><td>Meter required? </td><td class="value">' + props.WaterMeterRequired + '</td></tr>'+
+			'<tr><td>Meter required by </td><td class="value">' + checkDefined(props.WaterMeterRequiredDate) +'</td></tr>'+
+			'<tr><td>Meter installed? </td><td class="value">' + props.WaterMeterInstalled +'</td></tr>'+
+			'<tr><td>Meter installed on  </td><td class="value">' + checkDefined(props.WaterMeterInstallationDate) +'</td></tr>'+
 			'<tr><td> </td></tr>'+
-			'<tr><td>HBRC Meter Name </td><td>' + '</td></tr>'+
-			'<tr><td>Meter Serial Number </td><td>' + '</td></tr>'+
-			'<tr><td>Meter verification date </td><td>' + '</td></tr>'+
-			'<tr><td>Measured error </td><td>' + '</td><td>%</td></tr>'+
+			'<tr><td>HBRC Meter Name </td><td class="value">' + checkDefined(props.MeterName) +'</td></tr>'+
+			'<tr><td>Meter Serial Number </td><td class="value">' + checkDefined(props.SerialNo) +'</td></tr>'+
+			'<tr><td>Meter verification date </td><td class="value">' + checkDefined(props.WaterMeterVerificationDate) +'</td></tr>'+
+			'<tr><td>Measured error </td><td class="value">' + checkDefined(props.WaterMeterVerifyErrorPercentage) +'</td><td>%</td></tr>'+
+			'<tr><td>Verification Status: </td><td class="value">' + checkDefined(props.WaterMeterVerificationPassFail) +'</td></tr>'+
 			'<tr><td> </td></tr>'+
-			'<tr><td>Telemetry required? </td><td>' + '</td></tr>'+
-			'<tr><td>Telemetry required by </td><td>' + '</td></tr>'+
-			'<tr><td>Telemetry installed on </td><td>' + '</td></tr>'+
+			'<tr><td>Telemetry required? </td><td class="value">' + props.TelemetryRequired +'</td></tr>'+
+			'<tr><td>Telemetry required by </td><td class="value">' + checkDefined(props.TelemetryRequiredDate) +'</td></tr>'+
+			'<tr><td>Telemetry installed on </td><td class="value">' + checkDefined(props.TelemetryInstalledDate) +'</td></tr>'+
 			'</table>'
 			); 
 			info.show();
