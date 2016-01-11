@@ -16,7 +16,15 @@ html, body, #map {height: 100%;}
     border-radius: 5px;
 }
 
- h4 {
+td {
+	vertical-align: bottom;
+}
+
+td.value {
+	text-align: right;
+}
+
+h4 {
     margin: 4px 0 2px;
     color: #4B4949;
 }
