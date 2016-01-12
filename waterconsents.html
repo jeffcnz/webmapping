@@ -172,17 +172,17 @@
 			'<table><tr><td><h4>Consent Details</h4></td></tr>' +  
 			'<tr><td><b>Consent: </td><td class="value">' + props.ConsentNumber + '</td></b></tr>'+
 			'<tr><td>Bore: </td><td class="value">' + checkDefined(props.WellNumber) + '</td></tr>'+
-			'<tr><td>Water Use: </td><td class="value">' + props.UseDetail +'</td></tr>'+
+			'<tr><td class="top">Water Use: </td><td class="value">' + props.UseDetail +'</td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
 			'<tr><td>Recording frequency </td><td class="value">' + checkDefined(props.WMDRecordingFrequency) +'</td></tr>'+
 			'<tr><td>Return method </td><td class="value">' + checkDefined(props.WaterUseReturnMethod) +'</td></tr>'+
 			'<tr><td>Return frequency </td><td class="value">' + checkDefined(props.WaterUseReturnFrequency) +'</td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
-			'<tr><td>Max. weekly volume </td><td class="value">' + checkDefined(props.ConsentMaxWeeklyTake) +'</td><td> m<sup>3</sup>/week</td></tr>'+
-			'<tr><td>Max. 28 day volume </td><td class="value">' + checkDefined(props.ConsentMax28DayTake) +'</td><td> m<sup>3</sup>/28 days</td></tr>'+
-			'<tr><td>Max. monthly volume</td><td class="value">' + checkDefined(props.ConsentMaxMonthlyTake) +'</td><td> m<sup>3</sup>/month</td></tr>'+
-			'<tr><td>Max. annual volume </td><td class="value">' + checkDefined(props.ConsentMaxAnnualTake) +'</td><td> m<sup>3</sup>/year</td></tr>'+
-			'<tr><td>Max. consented take rate </td><td class="value">' + checkDefined(props.ConsentMaxTakeRate) +'</td><td> l/s </td></tr>'+
+			'<tr><td>Max. weekly volume </td><td class="value">' + checkDefined(props.ConsentMaxWeeklyTake) +'</td><td class="units"> m<sup>3</sup>/week</td></tr>'+
+			'<tr><td>Max. 28 day volume </td><td class="value">' + checkDefined(props.ConsentMax28DayTake) +'</td><td class="units"> m<sup>3</sup>/28 days</td></tr>'+
+			'<tr><td>Max. monthly volume</td><td class="value">' + checkDefined(props.ConsentMaxMonthlyTake) +'</td><td class="units"> m<sup>3</sup>/month</td></tr>'+
+			'<tr><td>Max. annual volume </td><td class="value">' + checkDefined(props.ConsentMaxAnnualTake) +'</td><td class="units"> m<sup>3</sup>/year</td></tr>'+
+			'<tr><td>Max. consented take rate </td><td class="value">' + checkDefined(props.ConsentMaxTakeRate) +'</td><td class="units"> l/s </td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
 			'<tr><td><h4>Water Meter Details</h4></td><td></tr>' + 
 			'<tr><td>Meter required? </td><td class="value">' + props.WaterMeterRequired + '</td></tr>'+
@@ -193,7 +193,7 @@
 			'<tr><td>HBRC Meter Name </td><td class="value">' + checkDefined(props.MeterName) +'</td></tr>'+
 			'<tr><td>Meter Serial Number </td><td class="value">' + checkDefined(props.SerialNo) +'</td></tr>'+
 			'<tr><td>Meter verification date </td><td class="value">' + checkDefined(props.WaterMeterVerificationDate) +'</td></tr>'+
-			'<tr><td>Measured error </td><td class="value">' + checkDefined(props.WaterMeterVerifyErrorPercentage) +'</td><td>%</td></tr>'+
+			'<tr><td>Measured error </td><td class="value">' + checkDefined(props.WaterMeterVerifyErrorPercentage) +'</td><td class="units">%</td></tr>'+
 			'<tr><td>Verification Status: </td><td class="value">' + checkDefined(props.WaterMeterVerificationPassFail) +'</td></tr>'+
 			'<tr><td> </td></tr>'+
 			'<tr><td>Telemetry required? </td><td class="value">' + props.TelemetryRequired +'</td></tr>'+
