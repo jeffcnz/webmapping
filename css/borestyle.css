@@ -15,13 +15,22 @@ html, body, #map {height: 100%;}
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
+td.units {
+	width: 90px;
+}
+
 
 td {
 	vertical-align: bottom;
 }
 
+td.top {
+	vertical-align: top;
+}
+
 td.value {
 	text-align: right;
+	width: 100px;
 }
 
 h4 {
