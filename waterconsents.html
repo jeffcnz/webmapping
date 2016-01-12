@@ -55,11 +55,11 @@
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
 		var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
-		
+		var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/';//url of feature service
 		
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
 		var hbconsents = L.esri.featureLayer({
-			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/',
+			url: featureUrl,
 			//url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
 			pointToLayer: function (geojson, latlng) {return L.circleMarker(latlng, 
 				{radius: 10,
@@ -80,7 +80,7 @@
 		
 		//Define the feature search (geocoding service), search consent number and bore number		
 		var hbcons = L.esri.Geocoding.featureLayerProvider({
-			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
+			url: featureUrl,
 			searchFields: ['ConsentNumber', 'WellNumber'], // Search these fields for text matches
 			label: 'Water Takes', // Group suggestions under this header
 			formatSuggestion: function(feature){
