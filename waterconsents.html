@@ -132,7 +132,7 @@
 	function featureQuery(pointObject) {
 		i = 0;
 		featureInfo = {};
-		hbconsents.query().nearby(pointObject, 10).where(currentQuery).run(function(error, featureCollection){
+		hbconsents.query().nearby(pointObject, 1).where(currentQuery).run(function(error, featureCollection){
 				if (featureCollection.features.length > 0){
 					featureInfo = featureCollection.features;
 					info.update(featureInfo[i].properties)
