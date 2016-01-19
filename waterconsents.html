@@ -56,7 +56,7 @@
 
 		var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
 		var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/';//url of feature service
-		
+		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
 		var hbconsents = L.esri.featureLayer({
 			url: featureUrl,
@@ -70,6 +70,8 @@
 			//where: currentQuery,
 			onEachFeature: onEachFeature //the function to call when a feature is interacted with
 			}).addTo(map);
+		//Add attribution for the feature layer
+		map.attributionControl.addAttribution(credits);
 
 	//Geocoding and search control
 		//Define the location geocoding service, from esri, limited to New Zealand
@@ -170,15 +172,15 @@
 	info.update = function (props) {
 		info.setContent(checkButtons() +
 			'<table><tr><td><h4>Consent Details</h4></td></tr>' +  
-			'<tr><td><b>Consent: </td><td class="value">' + props.ConsentNumber + '</td></b></tr>'+
-			'<tr><td>Bore: </td><td class="value">' + checkDefined(props.WellNumber) + '</td></tr>'+
-			'<tr><td class="top">Water Use: </td><td class="value">' + props.UseDetail +'</td></tr>'+
+			'<tr><td><b>Consent: </td><td>' + props.ConsentNumber + '</td></b></tr>'+
+			'<tr><td>Bore: </td><td>' + checkDefined(props.WellNumber) + '</td></tr>'+
+			'<tr><td>Water Use: </td><td>' + props.UseDetail +'</td></tr>'+
 			'<tr><td> </td><td>' + '</td></tr>'+
-			'<tr><td>Recording frequency </td><td class="value">' + checkDefined(props.WMDRecordingFrequency) +'</td></tr>'+
-			'<tr><td>Return method </td><td class="value">' + checkDefined(props.WaterUseReturnMethod) +'</td></tr>'+
-			'<tr><td>Return frequency </td><td class="value">' + checkDefined(props.WaterUseReturnFrequency) +'</td></tr>'+
-			'<tr><td> </td><td>' + '</td></tr>'+
-			'<tr><td>Max. weekly volume </td><td class="value">' + checkDefined(props.ConsentMaxWeeklyTake) +'</td><td class="units"> m<sup>3</sup>/week</td></tr>'+
+			'<tr><td>Recording frequency: </td><td>' + checkDefined(props.WMDRecordingFrequency) +'</td></tr>'+
+			'<tr><td>Return method: </td><td>' + checkDefined(props.WaterUseReturnMethod) +'</td></tr>'+
+			'<tr><td>Return frequency: </td><td>' + checkDefined(props.WaterUseReturnFrequency) +'</td></tr>'+
+			'<tr><td> </td><td>' + '</td></tr></table>'+
+			'<table><tr><td>Max. weekly volume </td><td class="value">' + checkDefined(props.ConsentMaxWeeklyTake) +'</td><td class="units"> m<sup>3</sup>/week</td></tr>'+
 			'<tr><td>Max. 28 day volume </td><td class="value">' + checkDefined(props.ConsentMax28DayTake) +'</td><td class="units"> m<sup>3</sup>/28 days</td></tr>'+
 			'<tr><td>Max. monthly volume</td><td class="value">' + checkDefined(props.ConsentMaxMonthlyTake) +'</td><td class="units"> m<sup>3</sup>/month</td></tr>'+
 			'<tr><td>Max. annual volume </td><td class="value">' + checkDefined(props.ConsentMaxAnnualTake) +'</td><td class="units"> m<sup>3</sup>/year</td></tr>'+
