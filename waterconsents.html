@@ -47,7 +47,14 @@
     <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
     </div>
     <div id="info"></div>
-    
+    <div id="help">
+		<h4>Hawke's Bay Water Take Information</h4>
+		<p>This map shows current water take consents authorised by the <a href="http://www.hbrc.govt.nz/Pages/default.aspx">Hawke's Bay Regional Council</a>.
+		Click on a take (blue dot) and information about that take and any <a href="http://www.hbrc.govt.nz/Services/Environment/Pages/Water-Metering.aspx">water meters</a> will be displayed.
+		You can use the search icon to search for places, consent numbers or bores.
+		The location function will centre the map on your location.</p>
+		<p></p>
+    </div>
     
     <script>
     //Open a map container and centre in the Hawke's Bay (Omahu Rd Expressway roundabout) at zoom 14
@@ -103,7 +110,8 @@
 			useMapBounds: false,
 			placeholder: 'Search for Consents, Bores or Addresses' 
 			}).addTo(map);
-
+		
+		//create a loading icon ready to display when content is loading
 		var loading = L.control();
 		
 		loading.onAdd = function (map) {
@@ -112,7 +120,24 @@
 			return this._div;
 			};
 		
+		//Create the help panel and add to the map
+		var help = L.control.sidebar('help', {
+			position: 'left'
+			});
+			
+		map.addControl(help);
 		
+		//create control for help and position in bottom left
+		var helpIcon = L.Control.extend({
+			options: {position: 'bottomleft'},
+			onAdd: function(map) {
+				var container = L.DomUtil.create('div', 'helpIcon');
+				container.innerHTML = '<i class="fa fa-question fa-2x"></i>';
+				container.onclick = function(){help.toggle();}
+				return container;
+				},
+			});
+		map.addControl(new helpIcon());
 		
 		// create an empty layer group to store the results and add it to the map
 		var results = L.layerGroup().addTo(map);
