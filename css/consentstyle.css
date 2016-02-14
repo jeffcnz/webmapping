@@ -44,17 +44,31 @@ h4 {
 button {
 	height: 30px;
 	width: 30px;
-	background-color: #43a2ca;
+	background-color: #1e4959;
 	border-radius: 20px;
 	color: white;
 }
 
 button:hover {
 	background-color: white;
-	color: #43a2ca;
+	color: #1e4959;
 	
 	}
 	
 #nextButton {
 	
+}
+
+.legend {
+	padding: 2px 2px;	
+	background-color: white;
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 1;
 }

@@ -43,14 +43,14 @@ h4 {
 button {
 	height: 30px;
 	width: 30px;
-	background-color: #43a2ca;
+	background-color: #1e4959;
 	border-radius: 20px;
 	color: white;
 }
 
 button:hover {
 	background-color: white;
-	color: #43a2ca;
+	color: #1e4959;
 	
 	}
 	
