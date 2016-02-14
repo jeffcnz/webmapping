@@ -28,8 +28,24 @@
 </head>
 
 <body>
-    <div id="map" class="map" ></div>
+    <div id="map" class="map" >
+		<div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+    </div>
     <div id="info"><h4>Tukituki Information</h4></div>
+    
+    <div id="help">
+		<h4>Tukituki Information</h4>
+		<p>In the Tukituki catchment land owners are required to meet fencing and farm environmental planning requirements set out in the <a href="http://www.hbrc.govt.nz/Pages/default.aspx">Hawke's Bay Regional Council</a> Regional Resource Management Plan.
+		Different issues have been identified in different subcatchments.  This map allows the subcatchments to be identified and summarises the issues that have been identified.
+		
+		To select a sub-catchment either</p> 
+		<ul>
+			<li>click on the map</li>
+			<li>use the search icon to search for places</li>
+			<li>select the location icon to use your current location.</li>
+		</ul>
+		<p></p>
+    </div>
     
     <!--script src="CatchmentInfo.js"></script-->
     <script src="js/subcatinf.js"></script>
@@ -45,14 +61,15 @@
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
 
-	
+		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/">Data from HBRC</a>';
 		//Overlay with an ESRI feature layer showing Tukituki Subcatchments.
 		var ttsubcat = L.esri.featureLayer({
 			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/Tukituki_PC6_Maps/FeatureServer/3/',
 			style : style, //function setting the styling for the layer
 			//onEachFeature: onEachFeature //the function to call when a feature is interacted with
 			}).addTo(map);
-			
+		//Add attribution for the feature layer
+		map.attributionControl.addAttribution(credits);	
 	//Feature Layer Style Function
 	function style(feature) {
     return {
@@ -158,7 +175,33 @@
 			useMapBounds: false,
 			placeholder: 'Search for Addresses' 
 			}).addTo(map);
-
+		//create a loading icon ready to display when content is loading
+		var loading = L.control();
+		
+		loading.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'loadicon');
+			this._div.innerHTML = '<i class="fa fa-spinner fa-2x fa-spin"></i>';
+			return this._div;
+			};
+		
+		//Create the help panel and add to the map
+		var help = L.control.sidebar('help', {
+			position: 'left'
+			});
+			
+		map.addControl(help);
+		
+		//create control for help and position in bottom left
+		var helpIcon = L.Control.extend({
+			options: {position: 'bottomleft'},
+			onAdd: function(map) {
+				var container = L.DomUtil.create('div', 'helpIcon');
+				container.innerHTML = '<i class="fa fa-question fa-2x"></i>';
+				container.onclick = function(){help.toggle();}
+				return container;
+				},
+			});
+		map.addControl(new helpIcon());
 
 		// create an empty layer group to store the results and add it to the map
 		var results = L.layerGroup().addTo(map);
@@ -186,7 +229,9 @@
 		if (typeof infoText === 'undefined') infoText = ''; //checks if a second variable has been passed
 		results.clearLayers();
 		results.addLayer(L.marker(pointObject));//adds marker at first location found
+		loading.addTo(map);
 		ttsubcat.query().intersects(pointObject).run(function(error, featureCollection){
+				loading.getContainer().innerHTML='';
 				if (featureCollection.features.length > 0){
 					info.update(featureCollection.features[0].properties, infoText)
 					} else {info.update(' ', infoText)};
