@@ -55,9 +55,24 @@ button:hover {
 	
 	}
 	
-#nextButton {
-	
+.button:link, .button:visited {
+	background-color: #1e4959;
+	border-radius: 20px;
+	color: white;
+	padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-style: solid;
+    border-color: #1e4959;
+    border-width: 1px;
 }
+
+.button:hover, .button:active {
+	background-color: white;
+	color: #1e4959;
+}
+
 
 .legend {
 	padding: 2px 2px;	
