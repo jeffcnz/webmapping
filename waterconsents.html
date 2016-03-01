@@ -71,23 +71,11 @@
 		var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/';//url of feature service
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
-		var hbconsents = L.esri.featureLayer({
-			url: featureUrl,
-			//url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
-			pointToLayer: function (geojson, latlng) {return L.circleMarker(latlng, 
-				{radius: 10,
-				stroke: true,
-				color: '#FFFFFF',
-				weight:1,
-				opacity: 0.8,
-				fillColor: '#1e4959',	
-				//stroke: false,
-				//fillColor: '#43a2ca',
-				fillOpacity: 0.8}
-				);},
-			//where: currentQuery,
-			onEachFeature: onEachFeature //the function to call when a feature is interacted with
-			}).addTo(map);
+		//layer variable defined here, but populated with the esri layer after the listners so that the 
+		//styling functions and reset style works (see Leaflet tutorials for info).
+		var hbconsents; 
+		var consentSearch;
+		
 		//Add attribution for the feature layer
 		map.attributionControl.addAttribution(credits);
 
@@ -108,13 +96,22 @@
 				}
 			});
 
-		// create the geocoding control and add it to the map
-		var consentSearch = L.esri.Geocoding.geosearch({
-			providers: [arcgisOnline, hbcons],
-			position: 'topright',
-			useMapBounds: false,
-			placeholder: 'Search for Consents, Bores or Addresses' 
-			}).addTo(map);
+		
+		
+		
+		//style function
+		function style(feature) {
+			return {
+				radius: 10,//can use circleSize(map), but needs to be refreshed on zoom
+				stroke: true,
+				color: '#FFFFFF',
+				weight:1,
+				opacity: 0.8,
+				fillColor: '#1e4959',	
+				fillOpacity: 0.8
+				};
+			}
+		
 		
 		//create a loading icon ready to display when content is loading
 		var loading = L.control();
@@ -148,17 +145,7 @@
 		var results = L.layerGroup().addTo(map);
 		//var searchMark = L.featureGroup().addTo(map);
 
-		// listen for the results event and add every result to the map
-		consentSearch.on("results", function(data) {
-			lc.stop();//stops location services, info wasn't displaying if location and search results active at same time, may need reassessed
-			results.clearLayers();
-			for (var i = data.results.length - 1; i >= 0; i--) {
-				results.addLayer(L.marker(data.results[i].latlng));
-				};
-			//featureQuery(data.results[0].latlng);
-					
-			
-			});
+		
 			
 	//Feature layer listner function
 	function onEachFeature(feature, layer) {
@@ -168,23 +155,44 @@
 			click: infoFeature
 			});
 		}
+	
+	
+		
+	//create the feature layer after the event handlers so that the reset styles function works	
+	hbconsents = L.esri.featureLayer({
+			url: featureUrl,
+			//url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/',
+			pointToLayer: function (geojson, latlng) {return L.circleMarker(latlng, 
+				{}
+				);},
+			style: style,
+			//where: currentQuery,
+			onEachFeature: onEachFeature //the function to call when a feature is interacted with
+			}).addTo(map);	
+			
+	// create the geocoding control and add it to the map
+	consentSearch = L.esri.Geocoding.geosearch({
+			providers: [arcgisOnline, hbcons],
+			position: 'topright',
+			useMapBounds: false,
+			placeholder: 'Search for Consents, Bores or Addresses'
+			}).addTo(map);
 		
 	//Function to update the information panel
 	function infoFeature(e) {
-		//console.log(e);
-		//searchMark.clearLayers();
-		hbconsents.setStyle({fillColor: '#1e4959'});//reset all features to default colour
-		if (e.target) {
-			//console.log(typeof e.target.feature.id);
-			hbconsents.setFeatureStyle(e.target.feature.id, {fillColor: '#ff0000'});//highlight selected feature
-			featureQuery(e.target._latlng);
-			}		
-		}
+		hbconsents.resetStyle();//reset all features to default colour
+		hbconsents.setFeatureStyle(e.target.feature.id, {fillColor: '#ff0000'});//highlight selected feature
+		featureQuery(e.target._latlng);
+			}
+		
+		
+		
+	
 		
 	var featureInfo = {};
 	var i = 0;
 	
-		
+	//query the centre point of the feature, return the records and display the first one.	
 	function featureQuery(pointObject) {
 		loading.addTo(map);
 		i = 0;
@@ -194,7 +202,7 @@
 				if (featureCollection.features.length > 0){
 					featureInfo = featureCollection.features;
 					info.update(featureInfo[i].properties)
-					};
+				}
 				});
 		}
 	
@@ -281,6 +289,20 @@
 		locateOptions: {
 			}
 		}).addTo(map);
+		var res = {};
+		
+	// listen for the results event and add every result to the map
+		consentSearch.on("results", function(data) {
+			lc.stop();//stops location services, info wasn't displaying if location and search results active at same time, may need reassessed
+			results.clearLayers();//clear the results markers
+			hbconsents.resetStyle();//reset the style to the default
+			info.hide();//hide the sidebar info panel if it was showing
+			for (var i = data.results.length - 1; i >= 0; i--) {
+				results.addLayer(L.marker(data.results[i].latlng));
+				};
+			
+				});
+
 	
 	//Stop following if the user drags the map
 	map.on('startfollowing', function() {
