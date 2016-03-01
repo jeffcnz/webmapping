@@ -260,7 +260,9 @@
             '<tr><td class="heading">Decision Date: </td><td>' + props.DateOfDecision +'</td></tr>'+
             '<tr><td class="heading">Expiry Date: </td><td>' + props.ExpiryDate +'</td></tr>'+
             '<tr><td class="heading">Date Consent Ended: </td><td>' + checkDefined(props.ConsentEnded) +'</td></tr>'+
-			'</table>'
+			'</table>'+
+			'<p> </p>'+
+			'<a href="docs/'+ props.ConsentNumber +'.pdf">Consent Document</a>'
 			); 
 			info.show();
 		};
