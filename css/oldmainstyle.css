@@ -1,0 +1,37 @@
+body {
+    font: 100% Lucida Sans, Verdana;
+    margin: 20px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.container {
+    xmin-width: 900px;
+}
+
+.jumbotron {
+	border-radius: 5px;
+	background-color: #a6dba0;
+	background: Linear-gradient(#a6dba0, #D2EFCF);
+}
+
+.col-md-6 {
+	padding: 5px;
+	border-radius: 5px;
+	
+}
+
+#water {
+	background-color: #B5E2DB;
+	background: linear-gradient(#B5E2DB, #E0F4F1);
+}
+
+#land {
+	background-color: #F4E5C0;
+	background: linear-gradient(#F4E5C0, #FCF4E1);
+}
+
+#consent {
+	background-color: #a6dba0;
+	background: Linear-gradient(#a6dba0, #D2EFCF);
+}
