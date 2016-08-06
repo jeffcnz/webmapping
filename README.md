@@ -2,10 +2,10 @@
 
 A collection of webmapping projects using Leaflet, and plugins such as
 
-+Esri Leaflet
-+Esri Geocoder
-+Leaflet Locate
-+Leaflet Sidebar
++ Esri Leaflet
++ Esri Geocoder
++ Leaflet Locate
++ Leaflet Sidebar
 
 Data has been obtained from the Hawke's Bay Regional Council Arc GIS server.
 
