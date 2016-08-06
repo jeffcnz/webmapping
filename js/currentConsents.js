@@ -1,62 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8" />
-	<meta name="description" content="Interactive map showing Resource Consent information in the Hawke's Bay.">
-	<meta name="keywords" content="Hawke's Bay, Regional Council, Consent, HBRC, meter">
-	<meta name="author" content="Jeff Cooke">
-	
-	<title>HBRC Current Consents</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <!-- Load Leaflet from CDN-->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" />
-    <!--Leaflet-->
-    <script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script>
-    
-    <!-- Esri Leaflet -->
-     <script src="http://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.6/esri-leaflet.js"></script>
-    
-    <!-- Esri Leaflet Geocoder not picking up options if use links to cdn-->
-    <link rel="stylesheet" href="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.css">
-    <script src="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.js"></script>
-    
-    <!--Leaflet locate-->
-	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
-	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
-	<!--[if lt IE 9]>
-		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
-	<![endif]-->
-	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+//Javascript for the current consents web page
 
-
-	<!--Leaflet sidebar-->
-	<script src='lib/leaflet_sidebar/L.Control.Sidebar.js'></script>
-	<link href='lib/leaflet_sidebar/L.Control.Sidebar.css' rel='stylesheet' />
-<!--[if lt IE 9]>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
-<![endif]-->
-	<!--link href='lib/font-awesome-4.5.0/css/font-awesome.min.css' rel='stylesheet' /-->
-    
-    
-    <link rel="stylesheet" type="text/css" href="css/consentstyle.css"></link>
-</head>
-
-<body>
-	
-    <div id="map" class="map" >
-    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
-    </div>
-    <div id="info"></div>
-    <div id="help">
-		<h4>Hawke's Bay Resource Consent Information</h4>
-		<p>This map shows current Resource Consents authorised by the <a href="http://www.hbrc.govt.nz/Pages/default.aspx">Hawke's Bay Regional Council</a>.
-		Click on a consent and information about it will be displayed.
-		You can use the search icon to search for places, or consent numbers.
-		The location function will centre the map on your location.</p>
-		<p></p>
-    </div>
-    
-    <script>
     //Open a map container and centre in the Hawke's Bay (Omahu Rd Expressway roundabout) at zoom 14
 		var map = L.map('map').setView([-39.620363,176.816379], 14);
 
@@ -313,7 +256,3 @@
 		};
 
 legend.addTo(map);
-
-    </script>
-</body>
-</html>
