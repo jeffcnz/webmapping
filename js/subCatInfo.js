@@ -14,7 +14,8 @@
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/">Data from HBRC</a>';
 		//Overlay with an ESRI feature layer showing Tukituki Subcatchments.
 		var ttsubcat = L.esri.featureLayer({
-			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/Tukituki_PC6_Maps/FeatureServer/3/',
+			//url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/Tukituki_PC6_Maps/FeatureServer/3/',
+			url: 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/Tukituki_PC6_Maps/MapServer/3/',
 			style : style, //function setting the styling for the layer
 			//onEachFeature: onEachFeature //the function to call when a feature is interacted with
 			}).addTo(map);
