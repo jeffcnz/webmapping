@@ -15,7 +15,7 @@ var subCatInfo = [{
 	"properties":{
 		"ID":"T8",
 		"StockEx":"Yes",
-		"Priority":"No"
+		"Priority":"Yes"
 		}},
   {"Name": "Makara",
 	"properties":{
@@ -74,7 +74,7 @@ var subCatInfo = [{
   {"Name": "Upper Tukituki",
 	"properties":{
 		"ID":"T4",
-		"StockEx":"Yes",
+		"StockEx":"No",
 		"Priority":"No"
 		}},
   {"Name": "Waipawa",
@@ -87,13 +87,13 @@ var subCatInfo = [{
 	"properties":{
 		"ID":"T5",
 		"StockEx":"Yes",
-		"Priority":"No"
+		"Priority":"Yes"
 		}},
   {"Name": "Upper Tukituki Corridor",
 	"properties":{
 		"ID":"T15",
-		"StockEx":"No",
-		"Priority":"No"
+		"StockEx":"Yes",
+		"Priority":"Yes"
 		}},
   {"Name": "Makaroro",
 	"properties":{
