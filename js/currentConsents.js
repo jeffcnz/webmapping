@@ -11,7 +11,8 @@
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
 		var currentQuery = "Status IN ('Current','S124 Expired/Exercised')";//SQL statement to limit results
-		var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/';//url of feature service
+		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/';//url of feature service
+		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/Regulatory/MapServer/6/';
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing consents, radius 10 for mobile screens so easier to hit with big fingers.
 		var hbconsents;
