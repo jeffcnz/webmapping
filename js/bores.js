@@ -11,7 +11,8 @@
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
 		//var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
-		var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCWellsWeb/MapServer/0/';//url of feature service
+		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCWellsWeb/MapServer/0/';//url of feature service
+		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/Regulatory/MapServer/4/';//url of new service
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCWellsWeb/MapServer">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
 		//layer variable defined here, but populated with the esri layer after the listners so that the 
