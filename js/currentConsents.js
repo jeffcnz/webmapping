@@ -10,7 +10,7 @@
 		L.esri.basemapLayer('Imagery').addTo(map);
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
-		var currentQuery = "Status IN ('Current','S124 Expired/Exercised')";//SQL statement to limit results
+		var currentQuery = "AuthorisationCurrentStatus IN ('Current','Expired - S.124 Protection')";//SQL statement to limit results
 		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/';//url of feature service
 		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/RegulatoryIRIS/MapServer/2/';
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer">Data from HBRC</a>'
