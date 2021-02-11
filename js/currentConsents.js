@@ -206,7 +206,8 @@
             '<tr><td class="heading">Date Consent Ended: </td><td>' + checkDefined(props.ConsentEnded) +'</td></tr>'+
 			'</table>'+
 			'<p> </p>'+
-			'<a class="button" href="https://consents.hbrc.govt.nz/consentdocuments/'+ props.AuthorisationIRISID +'.pdf" target="_blank">Consent Document</a>'
+			//'<a class="button" href="https://consents.hbrc.govt.nz/consentdocuments/'+ props.AuthorisationIRISID +'.pdf" target="_blank">Consent Document</a>'
+			'<a class="button" href=props.DocumentLink target="_blank">Consent Document</a>'
 			); 
 			info.show();
 		};
