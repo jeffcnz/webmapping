@@ -12,7 +12,7 @@
 
 		var currentQuery = "Status IN ('Current','S124 Expired/Exercised')";//SQL statement to limit results
 		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer/0/';//url of feature service
-		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/RegulatoryIRIS/MapServer/6/';
+		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/RegulatoryIRIS/MapServer/2/';
 		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/HBRCResourceConsentsWeb/FeatureServer">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing consents, radius 10 for mobile screens so easier to hit with big fingers.
 		var hbconsents;
@@ -30,10 +30,10 @@
 		//Define the feature search (geocoding service), search consent number		
 		var hbcons = L.esri.Geocoding.featureLayerProvider({
 			url: featureUrl,
-			searchFields: ['ConsentNumber'], // Search these fields for text matches
+			searchFields: ['AuthorisationIRISID', 'AuthorisationHistoricID'], // Search these fields for text matches
 			label: 'Consents', // Group suggestions under this header
 			formatSuggestion: function(feature){
-				return feature.properties.ConsentNumber; // format suggestions like this.
+				return feature.properties.AuthorisationIRISID; // format suggestions like this.
 				}
 			});
 
@@ -99,7 +99,7 @@
 				color: '#FFFFFF',
 				weight:1,
 				opacity: 0.8,
-				fillColor: getColor(feature.properties.Type),	
+				fillColor: getColor(feature.properties.AuthorisationActivityType),	
 				fillOpacity: 0.8
 			};
 }
@@ -191,22 +191,22 @@
 	info.update = function (props) {
 		info.setContent(checkButtons() +
 			'<table><tr><td><h4>Consent Details</h4></td></tr>' +  
-			'<tr><td class="heading"><b>Consent: </td><td>' + props.ConsentNumber + '</td></b></tr>'+
-			'<tr><td class="heading">Status: </td><td>' + props.Status + '</td></tr>'+
-			'<tr><td class="heading">Type: </td><td>' + props.Type +'</td></tr>'+
-            '<tr><td class="heading">Sub-Type: </td><td>' + props.SubType +'</td></tr>'+
-            '<tr><td class="heading">Use: </td><td>' + props.UseDesc +'</td></tr>'+
-            '<tr><td class="heading">Purpose: </td><td>' + props.Purpose +'</td></tr>'+
+			'<tr><td class="heading"><b>Consent: </td><td>' + props.AuthorisationIRISID + '</td></b></tr>'+
+			'<tr><td class="heading">Status: </td><td>' + props.AuthorisationCurrentStatus + '</td></tr>'+
+			'<tr><td class="heading">Type: </td><td>' + props.AuthorisationActivityType +'</td></tr>'+
+            '<tr><td class="heading">Sub-Type: </td><td>' + props.AuthorisationActivitySubType +'</td></tr>'+
+            '<tr><td class="heading">Use: </td><td>' + props.AuthPrimaryIndustry +'</td></tr>'+
+            '<tr><td class="heading">Purpose: </td><td>' + props.AuthPrimaryPurpose +'</td></tr>'+
             '<tr><td class="heading">Address: </td><td>' + props.SiteAddress +'</td></tr>'+
-            '<tr><td class="heading">Legal Description: </td><td>' + props.LegalDescription1 +'</td></tr>'+
-            '<tr><td class="heading"> </td><td>' + props.LegalDescription2 +'</td></tr>'+
+            '<tr><td class="heading">Legal Description: </td><td>' + props.AuthorisationLegal1 +'</td></tr>'+
+            '<tr><td class="heading"> </td><td>' + props.AuthorisationLegal2 +'</td></tr>'+
             '<tr><td class="heading">Well Number: </td><td>' + props.WellNumber +'</td></tr>'+
-            '<tr><td class="heading">Decision Date: </td><td>' + props.DateOfDecision +'</td></tr>'+
+            '<tr><td class="heading">Decision Date: </td><td>' + props.DecisionServedDate +'</td></tr>'+
             '<tr><td class="heading">Expiry Date: </td><td>' + props.ExpiryDate +'</td></tr>'+
             '<tr><td class="heading">Date Consent Ended: </td><td>' + checkDefined(props.ConsentEnded) +'</td></tr>'+
 			'</table>'+
 			'<p> </p>'+
-			'<a class="button" href="http://data.hbrc.govt.nz/ConsentDocuments/'+ props.ConsentNumber +'.pdf" target="_blank">Consent Document</a>'
+			'<a class="button" href="https://consents.hbrc.govt.nz/consentdocuments/'+ props.AuthorisationIRISID +'.pdf" target="_blank">Consent Document</a>'
 			); 
 			info.show();
 		};
