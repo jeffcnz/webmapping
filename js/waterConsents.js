@@ -12,8 +12,8 @@
 
 		var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
 		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/';//url of feature service
-		var featureUrl = 'https://hbmaps.hbrc.govt.nz/arcgis/rest/services/WebMaps/RegulatoryIRIS/MapServer/8/';//new url
-		var credits = '<a href="https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer">Data from HBRC</a>'
+		var featureUrl = 'https://gis.hbrc.govt.nz/server/rest/services/ExternalServices/Regulatory/MapServer/8/';//new url
+		var credits = '<a href="https://gis.hbrc.govt.nz/server/rest/services/ExternalServices/Regulatory/MapServer/8/">Data from HBRC</a>'
 	//Overlay with an ESRI feature layer showing water take consents, radius 10 for mobile screens so easier to hit with big fingers.
 		//layer variable defined here, but populated with the esri layer after the listners so that the 
 		//styling functions and reset style works (see Leaflet tutorials for info).
