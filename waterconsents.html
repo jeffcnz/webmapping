@@ -9,16 +9,24 @@
 	<title>HBRC Water Take Consents</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <!-- Load Leaflet from CDN-->
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" />
+    <!--Old link link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.css" /-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" />
     <!--Leaflet-->
-    <script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script>
+    <!-- Old link script src="http://cdn.leafletjs.com/leaflet-1.0.0-b1/leaflet.js"></script -->
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
     
     <!-- Esri Leaflet -->
-     <script src="http://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.6/esri-leaflet.js"></script>
+     <!-- Old link script src="http://cdn.jsdelivr.net/leaflet.esri/2.0.0-beta.6/esri-leaflet.js"></script -->
+	 <script src="https://cdn.jsdelivr.net/npm/esri-leaflet@3.0.10/dist/esri-leaflet.min.js"></script>
     
-    <!-- Esri Leaflet Geocoder not picking up options if use links to cdn-->
-    <link rel="stylesheet" href="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.css">
-    <script src="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.js"></script>
+    <!-- Esri Leaflet Geocoder was not picking up options if use links to cdn-->
+    <!-- link rel="stylesheet" href="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.css">
+    <script src="lib/esri_leaflet_geocoder/esri-leaflet-geocoder.js"></script -->
+
+
+	<!-- Esri Leaflet Geocoder cdn source to avoid depreciation issues-->
+	<script src="https://cdn.jsdelivr.net/npm/esri-leaflet-geocoder@3.1.4/dist/esri-leaflet-geocoder-debug.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/esri-leaflet-geocoder@3.1.4/dist/esri-leaflet-geocoder.min.css">
     
     <!--Leaflet locate-->
 	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
@@ -29,9 +37,14 @@
 	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
 
 
-	<!--Leaflet sidebar-->
-	<script src='lib/leaflet_sidebar/L.Control.Sidebar.js'></script>
-	<link href='lib/leaflet_sidebar/L.Control.Sidebar.css' rel='stylesheet' />
+	<!--Leaflet sidebar (OLD)-->
+	<!-- script src='lib/leaflet_sidebar/L.Control.Sidebar.js'></script>
+	<link href='lib/leaflet_sidebar/L.Control.Sidebar.css' rel='stylesheet' /-->
+
+    <!--Leaflet sidebar (CDN)-->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-sidebar@0.2.4/src/L.Control.Sidebar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-sidebar@0.2.4/src/L.Control.Sidebar.min.css">
+
 <!--[if lt IE 9]>
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
 <![endif]-->

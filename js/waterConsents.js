@@ -10,7 +10,8 @@
 		L.esri.basemapLayer('Imagery').addTo(map);
 		L.esri.basemapLayer('ImageryTransportation').addTo(map);
 
-		var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
+		var currentQuery = "Status IN ('Current','S124 Expired/Exercised')";//SQL statement to limit results
+		//var currentQuery = "Status IN ('Current','S124 Expired/Exercised') and Type='Water Permit'";//SQL statement to limit results
 		//var featureUrl = 'https://hbrcwebmap.hbrc.govt.nz/arcgis/rest/services/ConsentCurrentWaterTakePointMetersWeb/MapServer/0/';//url of feature service
 		var featureUrl = 'https://gis.hbrc.govt.nz/server/rest/services/ExternalServices/Regulatory/MapServer/8/';//new url
 		var credits = '<a href="https://gis.hbrc.govt.nz/server/rest/services/ExternalServices/Regulatory/MapServer/8/">Data from HBRC</a>'
@@ -116,7 +117,8 @@
 			
 	// create the geocoding control and add it to the map
 	consentSearch = L.esri.Geocoding.geosearch({
-			providers: [arcgisOnline, hbcons],
+			providers: [hbcons],
+			// providers: [arcgisOnline, hbcons],
 			position: 'topright',
 			useMapBounds: false,
 			placeholder: 'Search for Consents, Bores or Addresses'
@@ -141,7 +143,7 @@
 		loading.addTo(map);
 		i = 0;
 		featureInfo = {};
-		hbconsents.query().nearby(pointObject, 1).where(currentQuery).run(function(error, featureCollection){
+		hbconsents.query().nearby(pointObject, 1).where(currentQuery).run(function(_error, featureCollection){
 				loading.getContainer().innerHTML='';
 				if (featureCollection.features.length > 0){
 					featureInfo = featureCollection.features;
@@ -240,6 +242,7 @@
 		
 	// listen for the results event and add every result to the map
 		consentSearch.on("results", function(data) {
+			console.log(data)
 			lc.stop();//stops location services, info wasn't displaying if location and search results active at same time, may need reassessed
 			results.clearLayers();//clear the results markers
 			hbconsents.resetStyle();//reset the style to the default
